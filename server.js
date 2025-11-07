@@ -62,3 +62,8 @@ const name = await kv.get(['user', 28]);
 const type = await kv.get(['user', '28']);
 console.log(name.value); // → { name: 'OJK' }
 console.log(type.value); // → { type: 'Robot' } ※ちゃんと区別される
+
+const allPokemon = await kv.list({ prefix: ['pokemon'] });
+for await (const entry of allPokemon) {
+  console.log(entry.key, entry.value);
+}
