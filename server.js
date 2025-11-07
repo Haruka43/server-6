@@ -7,7 +7,6 @@ await kv.set(['pokemon', 'シャワーズ'], { type: '水', level: 26 });
 
 await kv.set(['pokemon', '悪', 'ブラッキー'], { level: 35 });
 await kv.set(['pokemon', '水', 'シャワーズ'], { level: 26 });
-console.log('--- 階層キーで set 完了 ---');
 
 await kv.set(['pokemon', 'ブラッキー'], { type: '悪' });
 await kv.set(['pokemon', 'ブラッキー'], { nickname: 'クロ' });
@@ -23,7 +22,7 @@ for await (const p of pkmns) {
 
 await kv.delete(['pokemon', 'ブラッキー']);
 let deleted = await kv.get(['pokemon', 'ブラッキー']);
-console.log(deleted.value); // → undefined
+console.log(deleted.value); // → null
 
 const atomic = kv.atomic();
 atomic.set(['pokemon', 'エーフィ'], { type: 'エスパー', level: 30 });
